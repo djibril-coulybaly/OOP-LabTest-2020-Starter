@@ -46,6 +46,11 @@ public class Gantt extends PApplet
 	{
 		float paddingTop = 100;
 		float gap = 50;
+		float loop = 0;
+		float blockHeight = 30;
+		float yPosition = 90;
+		colorMode(HSB);
+
 
 		//Displaying the Task names from the file task.csv
 		for (Task gantTask: gantTasks) {
@@ -55,16 +60,23 @@ public class Gantt extends PApplet
 			paddingTop+=gap;
 		}
 		
-		//Displaying the Gantt Chart Lines 
+		//Displaying the Gantt Chart Lines and Numbering 
 		for(int i = 1; i <= 30; i++) {
 			textAlign(CENTER);
 			text(i,map(i,0,30,paddingText,width - paddingLeft),35);
 			stroke(255);
 			line(map(i,0,30,paddingText,width - paddingLeft),50,map(i,0,30,paddingText,width - paddingLeft),height-50);
 		}
+
+		//Displaying the tasks 
+		for (Task gantTask: gantTasks) {
+			fill(map(loop,0,gantTasks.size(),0,255),255,255);
+			noStroke();
+			rect(map(gantTask.getStart(),0,30,paddingText,width - paddingLeft), yPosition, map((gantTask.getEnd() - gantTask.getStart()),0,30, 0,width - paddingText - 50), blockHeight, 5);
+			yPosition+=gap;
+			loop++;
+		}
 	}
-
-
 
 	public void mousePressed()
 	{
@@ -75,8 +87,6 @@ public class Gantt extends PApplet
 	{
 		println("Mouse dragged");
 	}
-
-	
 	
 	public void setup() 
 	{

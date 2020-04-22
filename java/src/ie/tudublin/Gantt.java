@@ -39,7 +39,17 @@ public class Gantt extends PApplet
 	//Displays the Gantt Chart
 	public void displayTasks()
 	{
+		float x1 = 50;
+		float y1 = 50;
+		float gap = 50;
 
+		//Displaying the Task names from the file task.csv
+		for (Task gantTask: gantTasks) {
+            fill(255);
+            textAlign(LEFT, CENTER);
+            text(gantTask.getTask(), x1, y1);
+            y1+=gap;
+        }
 	}
 
 

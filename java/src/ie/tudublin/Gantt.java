@@ -36,6 +36,14 @@ public class Gantt extends PApplet
         }
 	}
 	
+	//Displays the Gantt Chart
+	public void displayTasks()
+	{
+
+	}
+
+
+
 	public void mousePressed()
 	{
 		println("Mouse pressed");	
@@ -57,5 +65,6 @@ public class Gantt extends PApplet
 	public void draw()
 	{			
 		background(0);
+		displayTasks();
 	}
 }

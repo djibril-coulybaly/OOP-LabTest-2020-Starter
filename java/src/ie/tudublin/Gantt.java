@@ -13,11 +13,13 @@ public class Gantt extends PApplet
 
 	//Global Variables
 	float paddingLeft;
+	float paddingText;
 
 	public void settings()
 	{
 		size(800, 600);
 		paddingLeft = width * 0.07f;
+		paddingText = width * 0.17f;
 	}
 	
 	//Populates the arrayList from the file tasks.csv
@@ -51,7 +53,15 @@ public class Gantt extends PApplet
             textAlign(LEFT, CENTER);
             text(gantTask.getTask(), paddingLeft, paddingTop);
 			paddingTop+=gap;
-        }
+		}
+		
+		//Displaying the Gantt Chart Lines 
+		for(int i = 1; i <= 30; i++) {
+			textAlign(CENTER);
+			text(i,map(i,0,30,paddingText,width - paddingLeft),35);
+			stroke(255);
+			line(map(i,0,30,paddingText,width - paddingLeft),50,map(i,0,30,paddingText,width - paddingLeft),height-50);
+		}
 	}
 
 
